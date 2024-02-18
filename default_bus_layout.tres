@@ -1,0 +1,54 @@
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://dhvc40hydacge"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_ik65t"]
+resource_name = "Reverb"
+room_size = 0.45
+wet = 0.29
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_q446v"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_r8q7f"]
+resource_name = "Reverb"
+room_size = 0.6
+spread = 0.89
+dry = 0.9
+wet = 0.37
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_0gboj"]
+resource_name = "LowPassFilter"
+cutoff_hz = 1460.0
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_w6j1w"]
+resource_name = "PitchShift"
+pitch_scale = 0.99
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectReverb_ik65t")
+bus/0/effect/0/enabled = true
+bus/1/name = &"Minor"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -18.7575
+bus/1/send = &"Master"
+bus/2/name = &"reverb"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectReverb_q446v")
+bus/2/effect/0/enabled = true
+bus/3/name = &"sub"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectReverb_r8q7f")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectLowPassFilter_0gboj")
+bus/3/effect/1/enabled = true
+bus/3/effect/2/effect = SubResource("AudioEffectPitchShift_w6j1w")
+bus/3/effect/2/enabled = true

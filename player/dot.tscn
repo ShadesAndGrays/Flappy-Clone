@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn3hay3fgom6e"]
+
+[ext_resource type="Texture2D" uid="uid://ukg1i10k5y5v" path="res://player/dot.png" id="1_hcn23"]
+[ext_resource type="Script" path="res://player/dot.gd" id="2_ig84j"]
+
+[node name="Dot" type="Sprite2D"]
+position = Vector2(636, 427)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("1_hcn23")
+script = ExtResource("2_ig84j")

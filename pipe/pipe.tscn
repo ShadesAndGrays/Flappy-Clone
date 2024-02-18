@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://e04b2wewyqvf"]
+
+[ext_resource type="Script" path="res://pipe/pipe.gd" id="1_lh7hh"]
+[ext_resource type="Texture2D" uid="uid://bjwl80samix2t" path="res://player/pipe.png" id="2_llehv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvwgc"]
+size = Vector2(96, 506)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hysb0"]
+size = Vector2(96, 514)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhuyw"]
+size = Vector2(76.25, 1299)
+
+[node name="pipe" type="Node2D"]
+script = ExtResource("1_lh7hh")
+
+[node name="top" type="CharacterBody2D" parent="."]
+position = Vector2(-2, 226)
+
+[node name="Sprite2D" type="Sprite2D" parent="top"]
+position = Vector2(51, -262)
+scale = Vector2(2.638, 2.638)
+texture = ExtResource("2_llehv")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top"]
+position = Vector2(51, -255)
+shape = SubResource("RectangleShape2D_xvwgc")
+
+[node name="bottom" type="CharacterBody2D" parent="."]
+position = Vector2(8, -404)
+
+[node name="Sprite2D2" type="Sprite2D" parent="bottom"]
+position = Vector2(46, 1123)
+scale = Vector2(2.638, 2.638)
+texture = ExtResource("2_llehv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bottom"]
+position = Vector2(46, 1122)
+shape = SubResource("RectangleShape2D_hysb0")
+
+[node name="Destroyer" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destroyer"]
+position = Vector2(45, 356)
+shape = SubResource("RectangleShape2D_dhuyw")
+debug_color = Color(0.85098, 0, 0.192157, 0.419608)

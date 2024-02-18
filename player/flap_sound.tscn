@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuyk1fvatl7yg"]
+
+[ext_resource type="AudioStream" uid="uid://bligx4oelwkbb" path="res://player/flap.ogg" id="1_bppgb"]
+[ext_resource type="Script" path="res://player/flap_sound.gd" id="2_maauv"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_bppgb")
+volume_db = -16.0
+autoplay = true
+bus = &"Minor"
+script = ExtResource("2_maauv")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

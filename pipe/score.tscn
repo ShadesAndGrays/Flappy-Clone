@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://k67323uph32v"]
+
+[ext_resource type="AudioStream" uid="uid://3pmnaf5l6ppq" path="res://sound/646671__sounddesignforyou__coin-pickup-sfx-3.wav" id="1_7xrng"]
+
+[node name="score" type="AudioStreamPlayer"]
+stream = ExtResource("1_7xrng")
+volume_db = -29.947
+pitch_scale = 1.21
+autoplay = true
+bus = &"reverb"

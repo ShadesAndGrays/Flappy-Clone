@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsvxknwbxv3pl"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_mw02p"]
+[ext_resource type="PackedScene" uid="uid://cd675xdgsmria" path="res://player/player.tscn" id="1_n8548"]
+[ext_resource type="Script" path="res://Border_parent.gd" id="3_3xe8h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs4el"]
+size = Vector2(1829, 135)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sp727"]
+size = Vector2(234, 1064)
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "pipe_spawner", "flow_left", "flow_left_bg")]
+script = ExtResource("1_mw02p")
+player = NodePath("player")
+pipe_spawner = NodePath("pipe_spawner")
+flow_left = NodePath("Flow_left")
+flow_left_bg = NodePath("flow_left_bg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -249.0
+offset_top = -78.0
+offset_right = 1299.0
+offset_bottom = 779.0
+color = Color(0.615686, 0.901961, 0.933333, 1)
+
+[node name="flow_left_bg" type="Node2D" parent="."]
+
+[node name="player" parent="." node_paths=PackedStringArray("flow_left_bg") instance=ExtResource("1_n8548")]
+position = Vector2(293, 44)
+scale = Vector2(0.630547, 0.630547)
+flow_left_bg = NodePath("../flow_left_bg")
+
+[node name="Border_parent" type="Node2D" parent="."]
+script = ExtResource("3_3xe8h")
+
+[node name="border_top" type="StaticBody2D" parent="Border_parent"]
+position = Vector2(-249, -78)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border_parent/border_top"]
+position = Vector2(791, 6)
+shape = SubResource("RectangleShape2D_hs4el")
+
+[node name="border_bottom" type="StaticBody2D" parent="Border_parent"]
+position = Vector2(-219, 722)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Border_parent/border_bottom"]
+position = Vector2(791, 6)
+shape = SubResource("RectangleShape2D_hs4el")
+
+[node name="pipe_spawner" type="Timer" parent="."]
+wait_time = 1.2
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1148, -8)
+
+[node name="Flow_left" type="Node2D" parent="."]
+
+[node name="pipe_collector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pipe_collector"]
+position = Vector2(-269, 302)
+shape = SubResource("RectangleShape2D_sp727")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[connection signal="timeout" from="pipe_spawner" to="." method="_on_pipe_spawner_timeout"]
+[connection signal="area_entered" from="pipe_collector" to="." method="_on_pipe_collector_area_entered"]

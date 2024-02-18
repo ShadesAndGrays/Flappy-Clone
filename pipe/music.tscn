@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8pc27q6w0l3h"]
+
+[ext_resource type="AudioStream" uid="uid://cvkyt8d4d1sve" path="res://sound/Joshua McLean - Mountain Trials.mp3" id="1_2mb3i"]
+
+[node name="music" type="AudioStreamPlayer"]
+stream = ExtResource("1_2mb3i")
+volume_db = -35.428
+autoplay = true

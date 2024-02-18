@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b28drvff3k5p1"]
+
+[ext_resource type="PackedScene" uid="uid://dsvxknwbxv3pl" path="res://game.tscn" id="1_ims15"]
+[ext_resource type="PackedScene" uid="uid://pd1nxpbgo263" path="res://Ui.tscn" id="2_rkhmh"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Game" type="CanvasLayer" parent="."]
+
+[node name="Game" parent="Game" instance=ExtResource("1_ims15")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="UI" instance=ExtResource("2_rkhmh")]
+
+[connection signal="reset" from="Game/Game" to="UI/Control" method="reset"]
+[connection signal="area_exited" from="Game/Game/player/Rotation_handle/hitbox" to="UI/Control" method="_on_hitbox_area_exited"]
+
+[editable path="Game/Game"]
+[editable path="Game/Game/player"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd675xdgsmria"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_e47xb"]
+[ext_resource type="Texture2D" uid="uid://cysctaesnfap0" path="res://player/flappy.png" id="2_y0jsh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_07iak"]
+radius = 44.055
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yswd4"]
+radius = 34.5905
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("rotation_handle")]
+script = ExtResource("1_e47xb")
+rotation_handle = NodePath("Rotation_handle")
+
+[node name="Rotation_handle" type="Node2D" parent="."]
+position = Vector2(-29, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotation_handle"]
+position = Vector2(28.076, 1.30703)
+scale = Vector2(5.58967, 5.58967)
+texture = ExtResource("2_y0jsh")
+
+[node name="hitbox" type="Area2D" parent="Rotation_handle"]
+position = Vector2(30.9854, 0.114052)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotation_handle/hitbox"]
+position = Vector2(-0.985405, 4.88595)
+shape = SubResource("CircleShape2D_07iak")
+debug_color = Color(1, 0, 0.0980392, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_yswd4")
+
+[connection signal="body_entered" from="Rotation_handle/hitbox" to="." method="_on_hitbox_area_entered"]

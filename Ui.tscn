@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://pd1nxpbgo263"]
+
+[ext_resource type="Script" path="res://UI.gd" id="1_rmmpq"]
+[ext_resource type="FontFile" uid="uid://bhjb1pvgkg10u" path="res://fonts/rimouski sb.ttf" id="2_4jdyk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dhg45"]
+font = ExtResource("2_4jdyk")
+font_size = 36
+
+[node name="Control" type="Control" node_paths=PackedStringArray("label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rmmpq")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -83.0
+offset_right = 90.0
+offset_bottom = 44.0
+grow_horizontal = 2
+text = "SCORE: "
+label_settings = SubResource("LabelSettings_dhg45")
+horizontal_alignment = 1

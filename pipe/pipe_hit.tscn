@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://qxjpu2qd847h"]
+
+[ext_resource type="AudioStream" uid="uid://cdumxdjkusyqe" path="res://sound/426845__bibow__aluminium-pipe-dropped-on-concrete-400hz-high-pass.mp3" id="1_568jy"]
+[ext_resource type="Script" path="res://PipeHit.gd" id="2_8sprq"]
+
+[node name="PipeHit" type="AudioStreamPlayer"]
+stream = ExtResource("1_568jy")
+volume_db = -11.762
+pitch_scale = 0.81
+autoplay = true
+script = ExtResource("2_8sprq")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
