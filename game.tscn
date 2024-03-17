@@ -1,14 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsvxknwbxv3pl"]
+[gd_scene load_steps=10 format=3 uid="uid://dsvxknwbxv3pl"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_mw02p"]
 [ext_resource type="PackedScene" uid="uid://cd675xdgsmria" path="res://player/player.tscn" id="1_n8548"]
 [ext_resource type="Script" path="res://Border_parent.gd" id="3_3xe8h"]
+[ext_resource type="Shader" path="res://gamebloom.gdshader" id="4_6uhpp"]
+[ext_resource type="Shader" path="res://game.gdshader" id="4_8b4bj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs4el"]
 size = Vector2(1829, 135)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sp727"]
 size = Vector2(234, 1064)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0hq88"]
+shader = ExtResource("4_6uhpp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dk7m2"]
+shader = ExtResource("4_8b4bj")
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("player", "pipe_spawner", "flow_left", "flow_left_bg")]
 script = ExtResource("1_mw02p")
@@ -64,6 +72,24 @@ shape = SubResource("RectangleShape2D_sp727")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_0hq88")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_dk7m2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="timeout" from="pipe_spawner" to="." method="_on_pipe_spawner_timeout"]
 [connection signal="area_entered" from="pipe_collector" to="." method="_on_pipe_collector_area_entered"]

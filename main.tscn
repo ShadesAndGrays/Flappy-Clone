@@ -10,6 +10,7 @@
 [node name="Game" parent="Game" instance=ExtResource("1_ims15")]
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 8
 
 [node name="Control" parent="UI" instance=ExtResource("2_rkhmh")]
 
